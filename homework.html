@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kilometers to Miles Converter</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      text-align: center;
+      margin-top: 80px;
+      color: #333;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    .converter {
+      background: #fff;
+      padding: 25px 40px;
+      display: inline-block;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .buttons {
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 15px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button.clear {
+      background-color: #dc3545;
+    }
+
+    button.clear:hover {
+      background-color: #a71d2a;
+    }
+
+    #result {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kilometers to Miles Converter</h1>
+
+  <div class="converter">
+    <label for="kmInput">Enter distance in kilometers:</label>
+    <input type="number" id="kmInput" placeholder="e.g. 10">
+
+    <div class="buttons">
+      <button id="convertBtn">Convert to Miles</button>
+      <button id="clearBtn" class="clear">Clear</button>
+    </div>
+
+    <p id="result"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Converter Project | Developed for HW-1</p>
+  </footer>
+
+  <script>
+    document.getElementById('convertBtn').addEventListener('click', function() {
+      const kmInput = document.getElementById('kmInput').value.trim();
+      const result = document.getElementById('result');
+
+      if (kmInput === '' || isNaN(kmInput) || Number(kmInput) < 0) {
+        result.textContent = 'Please enter a valid positive number!';
+        result.style.color = 'red';
+        return;
+      }
+
+      const miles = Number(kmInput) * 0.621371;
+      result.textContent = `${kmInput} km = ${miles.toFixed(2)} miles`;
+      result.style.color = 'green';
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function() {
+      document.getElementById('kmInput').value = '';
+      document.getElementById('result').textContent = '';
+    });
+  </script>
+</body>
+</html>
